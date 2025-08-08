@@ -6,7 +6,7 @@ It can also be extended to spawn the robot in Gazebo.
 
 ---
 
-## 📂 Package Structure
+##  Package Structure
 └── spawn_pkg
     ├── launch
     │   ├── basic_shapes_gazebo.launch.py
@@ -36,7 +36,7 @@ It can also be extended to spawn the robot in Gazebo.
 
 ---
 
-## 📦 Requirements
+## Requirements
 - ROS 2 Humble (or newer)
 - `joint_state_publisher`  
 - `joint_state_publisher_gui`  
