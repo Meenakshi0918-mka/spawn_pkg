@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot name="basic_shapes_robot">
+
+  <!-- Cube Link -->
+  <link name="cube_link">
+    <visual>
+      <geometry>
+        <box size="0.3 0.3 0.3"/> <!-- Length, Width, Height in meters -->
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Cylinder Link -->
+  <link name="cylinder_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.5"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Sphere Link -->
+  <link name="sphere_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.15"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joints to connect the shapes -->
+
+  <!-- Cylinder on top of cube -->
+  <joint name="cube_to_cylinder" type="fixed">
+    <parent link="cube_link"/>
+    <child link="cylinder_link"/>
+    <origin xyz="0 0 0.4" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Sphere on top of cylinder -->
+  <joint name="cylinder_to_sphere" type="fixed">
+    <parent link="cylinder_link"/>
+    <child link="sphere_link"/>
+    <origin xyz="0 0 0.35" rpy="0 0 0"/>
+  </joint>
+
+</robot>
+

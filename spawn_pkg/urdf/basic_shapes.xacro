@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<robot name="basic_shapes_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Define materials -->
+  <xacro:property name="blue" value="0 0 1 1"/>
+  <xacro:property name="green" value="0 1 0 1"/>
+  <xacro:property name="red" value="1 0 0 1"/>
+
+  <!-- Cube dimensions -->
+  <xacro:property name="cube_size" value="0.3"/>
+
+  <!-- Cylinder dimensions -->
+  <xacro:property name="cylinder_radius" value="0.1"/>
+  <xacro:property name="cylinder_length" value="0.5"/>
+
+  <!-- Sphere dimensions -->
+  <xacro:property name="sphere_radius" value="0.15"/>
+
+  <!-- Cube Link -->
+  <link name="cube_link">
+    <visual>
+      <geometry>
+        <box size="${cube_size} ${cube_size} ${cube_size}"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="${blue}"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Cylinder Link -->
+  <link name="cylinder_link">
+    <visual>
+      <geometry>
+        <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+      </geometry>
+      <material name="green">
+        <color rgba="${green}"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Sphere Link -->
+  <link name="sphere_link">
+    <visual>
+      <geometry>
+        <sphere radius="${sphere_radius}"/>
+      </geometry>
+      <material name="red">
+        <color rgba="${red}"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joints -->
+
+  <!-- Cylinder on top of cube -->
+  <joint name="cube_to_cylinder" type="fixed">
+    <parent link="cube_link"/>
+    <child link="cylinder_link"/>
+    <origin xyz="0 0 0.4" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Sphere on top of cylinder -->
+  <joint name="cylinder_to_sphere" type="fixed">
+    <parent link="cylinder_link"/>
+    <child link="sphere_link"/>
+    <origin xyz="0 0 0.35" rpy="0 0 0"/>
+  </joint>
+
+</robot>
+
